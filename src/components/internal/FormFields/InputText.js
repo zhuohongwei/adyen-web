@@ -1,12 +1,8 @@
-import { Component, h } from 'preact';
+import { h } from 'preact';
 import InputBase from './InputBase';
 
-class InputText extends Component {
-    static defaultProps = {};
-
-    render() {
-        return <InputBase classNameModifiers={['large']} {...this.props} type="text" />;
-    }
+function InputText(props) {
+    return <InputBase classNameModifiers={['large']} {...props} type="text" />;
 }
 
 export default InputText;

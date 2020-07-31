@@ -1,4 +1,4 @@
-import { Component, h } from 'preact';
+import { h } from 'preact';
 import cx from 'classnames';
 import styles from './ApplePayButton.module.scss';
 import './ApplePayButton.scss';
@@ -9,30 +9,30 @@ interface ApplePayButtonProps {
     onClick: (event) => void;
 }
 
-class ApplePayButton extends Component<ApplePayButtonProps> {
-    public static defaultProps = {
-        onClick: () => {},
-        buttonColor: 'black',
-        buttonType: 'plain'
-    };
+function ApplePayButton(props: ApplePayButtonProps) {
+    const { buttonColor, buttonType } = props;
 
-    render({ buttonColor, buttonType }) {
-        /* eslint-disable jsx-a11y/no-static-element-interactions */
-        return (
-            <div
-                className={cx(
-                    'adyen-checkout__applepay__button',
-                    `adyen-checkout__applepay__button--${buttonColor}`,
-                    `adyen-checkout__applepay__button--${buttonType}`,
-                    [styles['apple-pay-button']],
-                    [styles[`apple-pay-button-${buttonColor}`]],
-                    [styles[`apple-pay-button--type-${buttonType}`]]
-                )}
-                onClick={this.props.onClick}
-            />
-        );
-        /* eslint-enable jsx-a11y/no-static-element-interactions */
-    }
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    return (
+        <div
+            className={cx(
+                'adyen-checkout__applepay__button',
+                `adyen-checkout__applepay__button--${buttonColor}`,
+                `adyen-checkout__applepay__button--${buttonType}`,
+                [styles['apple-pay-button']],
+                [styles[`apple-pay-button-${buttonColor}`]],
+                [styles[`apple-pay-button--type-${buttonType}`]]
+            )}
+            onClick={props.onClick}
+        />
+    );
+    /* eslint-enable jsx-a11y/no-static-element-interactions */
 }
+
+ApplePayButton.defaultProps = {
+    onClick: () => {},
+    buttonColor: 'black',
+    buttonType: 'plain'
+};
 
 export default ApplePayButton;

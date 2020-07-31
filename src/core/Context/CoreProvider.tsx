@@ -1,4 +1,4 @@
-import { Component, h, toChildArray } from 'preact';
+import { h, toChildArray } from 'preact';
 import { CoreContext } from './CoreContext';
 
 interface CoreProviderProps {
@@ -11,14 +11,10 @@ interface CoreProviderProps {
  * CoreProvider Component
  * Wraps a component delaying the render until after the i18n module is fully loaded
  */
-class CoreProvider extends Component<CoreProviderProps> {
-    render({ children }: CoreProviderProps) {
-        return (
-            <CoreContext.Provider value={{ i18n: this.props.i18n, loadingContext: this.props.loadingContext }}>
-                {toChildArray(children)}
-            </CoreContext.Provider>
-        );
-    }
+function CoreProvider(props: CoreProviderProps) {
+    const { children, i18n, loadingContext } = props;
+
+    return <CoreContext.Provider value={{ i18n, loadingContext }}>{toChildArray(children)}</CoreContext.Provider>;
 }
 
 export default CoreProvider;
