@@ -1,9 +1,9 @@
 module.exports = {
     parser: '@typescript-eslint/parser',
-    plugins: ['react', '@typescript-eslint', 'import', 'eslint-plugin-tsdoc', 'jsx-a11y'],
+    plugins: ['@typescript-eslint', 'import', 'eslint-plugin-tsdoc', 'jsx-a11y'],
     extends: [
         'eslint:recommended',
-        'plugin:react/recommended',
+        'preact',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended' /*'prettier/@typescript-eslint'*/
     ],
@@ -22,10 +22,6 @@ module.exports = {
         es6: true
     },
     settings: {
-        react: {
-            pragma: 'h',
-            version: '16.0'
-        },
         'import/resolver': {
             webpack: {
                 config: 'config/webpack.dev.js'
@@ -93,7 +89,6 @@ module.exports = {
         '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions'] }],
 
         // React Rules
-        'react/prop-types': 'off',
         'react/display-name': 'off',
 
         // TSDoc
